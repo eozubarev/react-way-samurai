@@ -1,0 +1,32 @@
+.container {
+    background-color: palevioletred;
+}
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+}
+
+.dialog {
+    padding: 10px;
+}
+
+.dialog.active {
+    color: palevioletred;
+    font-weight: 600;
+}
+
+.message {
+    padding: 10px;
+}
+
+.message.active {
+    color: palevioletred;
+    font-weight: 600;
+}
+
+.messages {
+}
