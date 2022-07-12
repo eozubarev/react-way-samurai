@@ -38,7 +38,7 @@ const Navbar = (props) => {
         </div>
         <div>
             <div className={styles.sidebar}>Friends:</div>
-            <Friends state={props.state.sidebar} />
+            <Friends store={props.state.sidebar} />
         </div>
     </nav>
   )

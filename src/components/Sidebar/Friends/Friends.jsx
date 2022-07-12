@@ -5,7 +5,7 @@ const Friends = (props) => {
 
     console.log(props);
 
-    let friends = props.state.friends.map(item => {
+    let friends = props.store.friends.map(item => {
         return <div className={styles.friend} key={item.id}>
                     <div className={styles.avatar}>
                         <img src={item.avatar} alt={`Фотография профиля: ${item.name}`} />
