@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
 import { useRef } from 'react';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../Redux/store';
 
 const MyPosts = (props) => {
 
@@ -11,13 +12,16 @@ const MyPosts = (props) => {
   })
 
   let postTextarea = React.useRef();
+
   let newPost = () => {
-    props.addPost();
-   }
+    let action = addPostActionCreator();
+    props.dispatch(action);
+  }
 
   let onPostChange = () => {
     let textPost = postTextarea.current.value;
-    props.updateNewPostText(textPost);
+    let action = updateNewPostTextActionCreator(textPost);
+    props.dispatch(action);
   }
 
   return (
