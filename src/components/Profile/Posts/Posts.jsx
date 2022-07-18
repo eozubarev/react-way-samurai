@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
 import { useRef } from 'react';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../Redux/store';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../Redux/reducers/profile-reducer';
 
 const MyPosts = (props) => {
 
@@ -25,7 +25,7 @@ const MyPosts = (props) => {
   }
 
   return (
-    <div>
+    <div> 
       My posts
       <div>
         <textarea ref={postTextarea} onChange={onPostChange} value={props.newPostText}/>
