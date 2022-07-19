@@ -1,29 +1,29 @@
 import React from 'react';
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
 import { sendMessageCreator, updateNewMessageBodyCreator } from '../../Redux/reducers/dialogs-reducer';
 import Dialogs from './Dialogs';
+import { connect } from 'react-redux';
 
-const DialogsContainer = (props) => {
-
-    let state = props.store.getState().dialogsPage;
-
-    let newMessagesBody = state.newMessagesBody;
-
-    let sendMessage = () => {
-        props.store.dispatch(sendMessageCreator());
+// Настраивает св-ва которые мы возьмём (в props)
+let mapStateToProps = (state) => {
+    return {
+        dialogs: state.dialogs,
+        messages: state.messages,
+        newMessageBody: state.newMessagesBody,
     }
-
-    let newMessage = (body) => {
-        props.store.dispatch(updateNewMessageBodyCreator(body));
-    }
-
-    return (<Dialogs messages={state.messages} 
-                     dialogs={state.dialogs} 
-                     sendMessage={sendMessage} 
-                     newMessage={newMessage} 
-                     newMessageBody={newMessagesBody}  
-                />)
 }
+
+// Кладём колбэки, которые придут к компоненте. Вызовет dispatch у Store и автоматичесски его забайндит bind()
+let mapDispatchToProps = (dispatch) => {
+    return {
+        newMessage: () => {
+            dispatch(sendMessageCreator());
+        },
+        sendMessage: (body) => {
+            dispatch(updateNewMessageBodyCreator(body));
+        }
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
