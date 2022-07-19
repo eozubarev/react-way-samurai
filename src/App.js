@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Messages from './components/Messages/Messages';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 function App(props) {
   return (
@@ -16,12 +17,9 @@ function App(props) {
         <Navbar state={props.state} />
           <Routes>
 
-            <Route path="/profile" element={<Profile 
-              profilePage={props.state.profilePage} 
-              dispatch={props.dispatch}
-            /> } />
+            <Route path="/profile" element={<Profile store={props.store} /> } />
 
-            <Route path="/dialogs/*" element={<Dialogs store={props.store} /> } />
+            <Route path="/dialogs/*" element={<DialogsContainer store={props.store} /> } />
 
             <Route path="/messages" element={
               <Messages/>

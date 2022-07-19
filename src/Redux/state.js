@@ -4,7 +4,7 @@ let rerenderEntireTree = () => {
 
 let state = {
     profilePage: {
-        postsData: [
+        posts: [
             {
                 id: 1,
                 message: "Hi, how are you?",
@@ -68,7 +68,7 @@ export const addPost = () => {
         likesCount: 0
     };
 
-    state.profilePage.postsData.push(newPost);
+    state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 
