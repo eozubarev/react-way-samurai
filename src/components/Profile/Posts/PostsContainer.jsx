@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
   return {
-    posts: state.posts,
-    newPostText: state.newPostText
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    updateNewPostText: (textPost) => {
+    updateNewPostText: (textPost) => {      
       dispatch(updateNewPostTextActionCreator(textPost));
     },
     addPost: () => {

@@ -6,19 +6,19 @@ import { connect } from 'react-redux';
 // Настраивает св-ва которые мы возьмём (в props)
 let mapStateToProps = (state) => {
     return {
-        dialogs: state.dialogs,
-        messages: state.messages,
-        newMessageBody: state.newMessagesBody,
+        dialogs: state.dialogsPage.dialogs,
+        messages: state.dialogsPage.messages,
+        newMessageBody: state.dialogsPage.newMessagesBody,
     }
 }
 
 // Кладём колбэки, которые придут к компоненте. Вызовет dispatch у Store и автоматичесски его забайндит bind()
 let mapDispatchToProps = (dispatch) => {
     return {
-        newMessage: () => {
+        sendMessage: () => {
             dispatch(sendMessageCreator());
         },
-        sendMessage: (body) => {
+        newMessage: (body) => {
             dispatch(updateNewMessageBodyCreator(body));
         }
     }

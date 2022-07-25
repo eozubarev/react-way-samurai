@@ -5,9 +5,8 @@ import Post from './Post/Post';
 import { useRef } from 'react';
 
 const MyPosts = (props) => {
-
-  let postsElements = props.posts.map(item => {
-    return <Post key={item.id} id={item.id} message={item.message} likesCount={item.likesCount} />
+  let postsElements = props.posts.map((item, index) => {
+    return <Post key={index} id={item.id} message={item.message} likesCount={item.likesCount} />
   })
 
   let postTextarea = React.useRef();

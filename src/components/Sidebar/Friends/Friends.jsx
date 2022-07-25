@@ -3,9 +3,7 @@ import styles from './Friends.module.scss'
 
 const Friends = (props) => {
 
-    console.log(props);
-
-    let friends = props.store.friends.map(item => {
+    let friends = props.friends.map(item => {
         return <div className={styles.friend} key={item.id}>
                     <div className={styles.avatar}>
                         <img src={item.avatar} alt={`Фотография профиля: ${item.name}`} />
