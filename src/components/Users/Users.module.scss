@@ -11,6 +11,19 @@
 
 }
 
+.selectedPage {
+    font-weight: 600;
+    color: red;
+    cursor: pointer;
+    padding: 0px 10px 0px 10px;
+
+}
+
+.page {
+    cursor: pointer;
+    padding: 0px 10px 0px 10px;
+}
+
 .avatar {
     width: 50px;
     height: 50px;

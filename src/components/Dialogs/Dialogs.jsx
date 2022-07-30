@@ -1,50 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 
-const Dialogs = (props) => {
+class Dialogs extends Component {
 
-    let dialogsElements = props.dialogs.map((item, index) => {
+    dialogsElements = this.props.dialogs.map((item, index) => {
         return <DialogItem key={index} name={item.name} id={item.id}/>
     });
 
-    let messagesElements = props.messages.map((item, index) => {
+    messagesElements = this.props.messages.map((item, index) => {
         return <Message key={index} message={item.message} id={item.id}/>
     });
 
-    let onSendMessageClick = () => {
-        props.sendMessage()
+    onSendMessageClick = () => {
+        this.props.sendMessage()
     }
 
-    let onNewMessageChange = (e) => {
+    onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.newMessage(body)
+        this.props.newMessage(body)
     }
 
-    return (
-        <div className={styles.dialogs}>
-            <div className={styles.dialogsItems}>
-                {dialogsElements}
-            </div>
-            <div className={styles.messages}>
-                <div>
-                    {messagesElements}
+    render() {
+        return (
+            <div className={styles.dialogs}>
+                <div className={styles.dialogsItems}>
+                    {this.dialogsElements}
                 </div>
-                <div>
+                <div className={styles.messages}>
                     <div>
-                        <textarea 
-                            value={props.newMessagesBody} 
-                            onChange={onNewMessageChange}
-                            placeholder='Enter your message'></textarea>
+                        {this.messagesElements}
                     </div>
                     <div>
-                        <button onClick={onSendMessageClick}>Send</button>
+                        <div>
+                            <textarea 
+                                value={this.props.newMessagesBody} 
+                                onChange={this.onNewMessageChange}
+                                placeholder='Enter your message'></textarea>
+                        </div>
+                        <div>
+                            <button onClick={this.onSendMessageClick}>Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Dialogs;
