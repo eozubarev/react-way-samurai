@@ -16,6 +16,8 @@ let Users = (props) => {
     let curPL = curP + 5;
     let slicedPages = pages.slice( curPF, curPL);
 
+    
+
     return (
         <div>
             <div>
@@ -43,19 +45,13 @@ let Users = (props) => {
                             </NavLink>                            
                         </div>
                         <div className={styles.followed}>
-                            {user.followed ? (
-                            <button
-                                onClick={ () => { props.unfollow(user.id) } }
-                            >
-                                Unfollow
-                            </button>
-                            ) : (
-                            <button
-                                onClick={ () => { props.follow(user.id) } }
-                            >
-                                Follow
-                            </button>
-                            )}
+                            {user.followed 
+                                ? ( <button disabled={props.folowingInProgress.some(id => id === user.id)} 
+                                            onClick={ () => { props.unfollow(user.id)} }  > Unfollow </button>) 
+                                            
+                                : (<button disabled={props.folowingInProgress.includes(user.id)} 
+                                            onClick={ () => { props.follow(user.id)} } > Follow </button>)
+                            }
                         </div>
                         </div>
                         <div className={styles.middle}>

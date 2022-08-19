@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import Friends from './Friends';
 
 let mapStateToProps = (state) => {
@@ -14,6 +16,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
+export default compose(
+                        connect(mapStateToProps, mapDispatchToProps)
+                    )(Friends)
 
-export default FriendsContainer;
+// export default FriendsContainer;
