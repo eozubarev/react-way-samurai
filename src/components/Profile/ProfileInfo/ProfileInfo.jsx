@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
       </div> */}
       <div>
         <img className={styles.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : defaultPhoto} />
-        <ProfileStatus status={props.status} />
+        <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
         <p>{props.profile.fullName}</p>
         <p>Обо мне: {props.profile.aboutMe}</p>
         <p>Работа: {props.profile.lookingForAJob === true ? 'Ищу работу' : 'Не ищу'}</p>
