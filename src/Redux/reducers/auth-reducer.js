@@ -1,6 +1,7 @@
 import { authAPI } from "../../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA"
+const SING_IN_USER_DATA = "SING_IN_USER_DATA"
 
 let initialState = {
     id: null,
@@ -43,5 +44,6 @@ export const authMe = (props) => {
     }
     
 } 
+
 
 export default authReducer

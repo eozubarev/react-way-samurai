@@ -27,7 +27,7 @@ class ProfileContainer extends Component {
   componentDidMount () {
     let userId = this.props.router.params.userId;
     if (!userId) {
-      userId = 2;
+      userId = 25086;
     }
     this.props.getAuthUserProfile(userId);
     this.props.getStatus(userId);

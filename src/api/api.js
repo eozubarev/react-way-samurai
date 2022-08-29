@@ -28,6 +28,10 @@ export const authAPI = {
         return instance.get(`auth/me`)
         .then(response => response.data)
     }
+    signIn () {
+        return instance.post(`auth/login`)
+        .then(response => response.data)
+    }
 }
 
 export const profileAPI = {
