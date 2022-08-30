@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Posts.module.css';
 import Post from './Post/Post';
 import { useRef } from 'react';
+import AddNewPostReduxForm from './AddNewPostForm/AddNewPostForm';
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((item, index) => {
@@ -11,21 +12,24 @@ const MyPosts = (props) => {
 
   let postTextarea = React.useRef();
 
-  let onAdPost = () => {
-    props.addPost();
-  }
+  // let onAdPost = () => {
+  //   props.addPost();
+  // }
 
-  let onPostChange = () => {
-    let textPost = postTextarea.current.value;
-    props.updateNewPostText(textPost)
+  // let onPostChange = () => {
+  //   let textPost = postTextarea.current.value;
+  //   props.updateNewPostText(textPost)
+  // }
+
+  let addNewPost = (values) => {
+    props.addPost(values.newPostText)
   }
 
   return (
     <div> 
       My posts
       <div>
-        <textarea ref={postTextarea} onChange={onPostChange} value={props.newPostText}/>
-        <button onClick={onAdPost}>Add post</button>
+        <AddNewPostReduxForm onSubmit={addNewPost} />
       </div>
       <div className={styles.posts}>
         {postsElements}

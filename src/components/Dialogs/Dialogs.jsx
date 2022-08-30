@@ -3,6 +3,7 @@ import styles from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { Navigate } from 'react-router-dom';
+import AddMessageReduxForm from './AddMessageForm/AddMessageForm';
 
 class Dialogs extends Component {
 
@@ -14,15 +15,9 @@ class Dialogs extends Component {
         return <Message key={index} message={item.message} id={item.id}/>
     });
 
-    onSendMessageClick = () => {
-        this.props.sendMessage()
+    addNewMessage = (values) => {
+        this.props.sendMessage(values.newMessageBody)
     }
-
-    onNewMessageChange = (e) => {
-        let body = e.target.value;
-        this.props.newMessage(body)
-    }
-
 
     render() {
 
@@ -39,13 +34,7 @@ class Dialogs extends Component {
                     </div>
                     <div>
                         <div>
-                            <textarea 
-                                value={this.props.newMessagesBody} 
-                                onChange={this.onNewMessageChange}
-                                placeholder='Enter your message'></textarea>
-                        </div>
-                        <div>
-                            <button onClick={this.onSendMessageClick}>Send</button>
+                            <AddMessageReduxForm onSubmit={this.addNewMessage} />
                         </div>
                     </div>
                 </div>
