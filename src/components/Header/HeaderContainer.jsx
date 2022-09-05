@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import { authMe, setAuthUserData } from '../../Redux/reducers/auth-reducer';
+import { authMe, logout, setAuthUserData } from '../../Redux/reducers/auth-reducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../hoc/withAuthRedirect';
 
 class HeaderContainer extends Component {
 
@@ -28,7 +27,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-                        connect(mapStateToProps, {setAuthUserData, authMe})
+                        connect(mapStateToProps, {setAuthUserData, authMe, logout})
                       )(HeaderContainer)
 
 // export default connect(mapStateToProps, {setAuthUserData, authMe})(HeaderContainer);

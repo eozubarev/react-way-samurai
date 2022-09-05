@@ -1,10 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Navigate} from 'react-router-dom';
+import { login } from '../../Redux/reducers/auth-reducer';
 import LoginReduxForm from './Login-form/LoginForm.js'
+
 
 const Login = (props) => {
 
   const onSubmit = (formData) => {
-    console.log(formData)
+    props.login(formData.email, formData.password, formData.rememberMe)
+  }
+
+  if (props.isAuth) {
+    return <Navigate to="/profile" replace />
   }
 
   return (
@@ -15,4 +23,8 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, { login })(Login);
