@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
+import style from '../../common/FormControls/FormControls.module.scss'
 import { Element } from '../../common/FormControls/FormControls';
 import { maxLenghtCreator, required } from '../../utils/validators/validators';
 
@@ -19,6 +20,7 @@ const LoginForm = (props) => {
         <div>
           <Field component={Input} name={"rememberMe"} type={"checkbox"} /> Remember Me
         </div>
+        {props.error && <div className={style.formSummaryError}>{props.error}</div>}
         <div>
           <button>Sign up</button>
         </div>
