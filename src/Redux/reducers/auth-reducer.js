@@ -35,18 +35,17 @@ export const setAuthUserData = (id, email, login, isAuth) => {
 }
 
 
-export const authMe = (props) => {
+export const authMe = (props) => (dispatch) => {
+    return authAPI.authMe().then((data) => {
+        if (data.resultCode === 0) {
+            let { id, email, login } = data.data;
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+    });
+};
 
-    return (dispatch) => {
-        authAPI.authMe().then(data => { 
-            if (data.resultCode === 0) {
-              let {id, email, login} = data.data;
-              dispatch(setAuthUserData(id, email, login, true));
-            }
-          })
-    }
     
-} 
+ 
 
 export const login = (email, password, rememberMe) => {
     return (dispatch) => {
